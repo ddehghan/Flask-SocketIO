@@ -36,7 +36,7 @@
             // The callback function is invoked when a connection with the
             // server is established.
             socket.on('connect', function() {
-                socket.emit('my_event', {data: 'I\'m connected!'});
+                {#socket.emit('my_event', {data: 'I\'m connected!'});#}
             });
 
             // Event handler for server sent data.
@@ -83,7 +83,7 @@
 </head>
 <body>
 <h1>Flask-SocketIO Test 1</h1>
-<p>Async mode is: <b>{{ async_mode }}</b></p>{{ active_sids }}
+<p>Async mode is: <b>{{ async_mode }}</b></p>
 <p>Active sids :<b>{% for sid in active_sids %}{{ sid }}<br>{% endfor %}</p>
 <p>Average ping/pong latency: <b><span id="ping-pong"></span>ms</b></p>
 <h2>Send:</h2>
