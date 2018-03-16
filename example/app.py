@@ -17,18 +17,6 @@ thread_lock = Lock()
 
 active_sids = []
 
-
-# def background_thread():
-#     """Example of how to send server generated events to clients."""
-#     count = 0
-#     while True:
-#         socketio.sleep(10)
-#         count += 1
-#         socketio.emit('my_response',
-#                       {'data': 'Server generated event', 'count': count},
-#                       namespace='/test')
-
-
 @app.route('/')
 def index():
     return render_template('index.html', async_mode=socketio.async_mode, active_sids=active_sids)
@@ -99,8 +87,6 @@ def ping_pong():
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
-    global thread
-
     active_sids.append(request.sid)
     emit('my_response', {'data': 'Connected', 'count': 0})
 
